@@ -5,12 +5,13 @@ FS_MODULES=/usr/lib/freeswitch/mod
 ################################
 
 ### END OF CUSTOMIZATION ###
-SHELL := /bin/bash
+SHELL := /usr/local/bin/bash
 PROC?=$(shell uname -m)
 
 CC=gcc 
 CFLAGS=-fPIC -O3 -fomit-frame-pointer -fno-exceptions -Wall -std=c99 -pedantic
-ifeq (${PROC},x86_64)
+
+ifeq (${PROC},amd64)
 	CFLAGS+=-m64 -mtune=generic
 else
 	CFLAGS+=-m32 -march=i686
